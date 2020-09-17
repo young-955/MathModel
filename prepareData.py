@@ -13,6 +13,8 @@ def load_tar_xml(path):
     # 性质列
     pro_cols = []
     pro_data = []
+    # 数据
+    data = []
 
     wb = oxl.load_workbook(path)
     tar_sheet = wb.get_sheet_by_name("Sheet1")
@@ -22,7 +24,15 @@ def load_tar_xml(path):
         pro_cols.append(tar_sheet.cell(row=4, column=i).value)
     
     # 获取操作变量列
-    
+    row = tar_sheet.max_row
+    col = tar_sheet.max_column
+    for i in range(5, row + 1):
+        row_data = []
+        for j in range(1, col + 1):
+            row_data.append(tar_sheet.cell(row=i, column=j).value)
+        
+        data.append(row_data)
+
 
 # 获取原始数据
 def load_ori_xml(path):
@@ -91,6 +101,13 @@ def load_ori_xml(path):
 
     return op_cols, op_data, pro_cols, pro_data
 
+
+# 预处理数据
+def preProcess(data):
+    # 数据整定
+    # 1.删除残缺数据过多的位点
+
+    # 2.删除全部为空的位点
 
 # %%
 if __name__ == "__main__":
