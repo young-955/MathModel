@@ -73,26 +73,24 @@ def load_ori_xml(path):
     t1 = []
     t2 = []
     # 原料sheet
-    col1 = pro_sheet1.max_column
-    for i in range(1, col1):
+    col285 = range(4, 44)
+    col313 = range(45, 85)
+    for i in col285:
         pro_cols.append(pro_sheet1.cell(row=1, column=i).value)
         t1.append(pro_sheet1.cell(row=2, column=i).value)
         t2.append(pro_sheet1.cell(row=3, column=i).value)
     # 产品sheet
-    col2 = pro_sheet2.max_column
-    for i in range(1, col2):
+    for i in col285:
         pro_cols.append(pro_sheet2.cell(row=2, column=i).value)
         t1.append(pro_sheet2.cell(row=3, column=i).value)
         t2.append(pro_sheet2.cell(row=4, column=i).value)
     # 待生吸附剂sheet
-    col3 = pro_sheet3.max_column
-    for i in range(1, col3):
+    for i in col285:
         pro_cols.append(pro_sheet3.cell(row=2, column=i).value)
         t1.append(pro_sheet3.cell(row=3, column=i).value)
         t2.append(pro_sheet3.cell(row=4, column=i).value)
     # 再生吸附剂sheet
-    col4 = pro_sheet4.max_column
-    for i in range(1, col4):
+    for i in col285:
         pro_cols.append(pro_sheet4.cell(row=2, column=i).value)
         t1.append(pro_sheet4.cell(row=3, column=i).value)
         t2.append(pro_sheet4.cell(row=4, column=i).value)
@@ -102,12 +100,14 @@ def load_ori_xml(path):
     return op_cols, op_data, pro_cols, pro_data
 
 
-# 预处理数据
+# 预处理285,313数据
 def preProcess(data):
     # 数据整定
     # 1.删除残缺数据过多的位点
 
     # 2.删除全部为空的位点
+
+    # 3.处理部分数据为空值的位点
 
 # %%
 if __name__ == "__main__":
