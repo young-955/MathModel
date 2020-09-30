@@ -17,8 +17,6 @@ def Solve(v_range, ron_model, s_model, pro_data, tar_data):
     init_data = input_data
     mid = 0
     midmid = 0
-    # flags = np.zeros([len(pro_data)])
-    # while any(k == 0 for k in flags):
     for i in range(len(pro_data)):
         lim = (v_range[i][1] - v_range[i][0]) / 990000
         temp_data = list(input_data)
@@ -56,8 +54,6 @@ def Solve(v_range, ron_model, s_model, pro_data, tar_data):
                     right[i] = midmid
                 else:
                     left[i] = mid
-        # else:
-        #     flags[i] = 1
         # 更新操作变量
         input_data[i + len(pro_data)] = left[i]
     
@@ -87,8 +83,6 @@ def optimize():
         ar, ron = Solve(v_range, ron_model, s_model, p, t)
         res.append(ar)
         opt_res.append(ron)
-        # print('var:' + str(ar))
-        # print('res:' + str(ron))
 
     return res, opt_res
 

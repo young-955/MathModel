@@ -10,6 +10,8 @@ s_model_path = r'C:\Users\wuziyang\Desktop\s_model.h5'
 
 
 # https://www.marktechpost.com/2019/06/17/regression-with-keras-deep-learning-with-keras-part-3/
+
+# 深度学习模型
 def dn_model(data, tar, test_data, test_tar):
     model = models.Sequential()
     model.add(layers.Dense(8, activation='relu', input_shape=[data.shape[1]]))
@@ -18,7 +20,6 @@ def dn_model(data, tar, test_data, test_tar):
     model.compile(optimizer='rmsprop', loss='mse', metrics=['mae'])
     his = model.fit(data, tar, validation_split=0.15, epochs=3000)
     res = model.evaluate(test_data, test_tar)
-    # print(np.array([data[0]]))
     print(model.predict(np.array([data[0]])))
     # The output values represent the loss (Mean Squarred Error) and the metrics (Mean Absolute Error).
     return model, res, his

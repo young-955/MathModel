@@ -1,3 +1,5 @@
+# %%
+#-*- coding:utf-8 –*-
 from sklearn.ensemble import  GradientBoostingClassifier
 from sklearn.feature_selection import SelectFromModel
 import prepareData as prd
@@ -7,11 +9,10 @@ from sklearn.decomposition import PCA
 from sklearn.linear_model import LogisticRegression
 from  matplotlib import pyplot as plt
 import pandas as pd
-import tools
+# import tools
 
 
-#
-#Load boston housing dataset as an example
+# 随机森林算法
 def randomTree(data, tar, col):
     res = []
     # 获取中英文列名dict
@@ -81,29 +82,31 @@ def cal_corr():
             pCols.append(i)
     pCols = np.array(pCols)
     opData = opData.reshape(325, -1)
-    print(opData.shape)
-    print(proData.shape)
-    print(pCols.shape)
+    # print(opData.shape)
+    # print(proData.shape)
+    # print(pCols.shape)
     a = np.hstack((np.array(opData), np.array(proData)))
     corr = pd.DataFrame(dict(zip((pCols), a.reshape(325, -1)))).corr()
     return corr
 
-
+# %%
 if __name__ == "__main__":
-    cols, data, tar, _, _, s_col = mergeData()
-    tar = tar.reshape(-1, 1)
-    data = np.array(data).T
-    model = randomTree(data, tar, cols)
+    # cols, data, tar, _, _, s_col = mergeData()
+    # tar = tar.reshape(-1, 1)
+    # data = np.array(data).T
+    # model = randomTree(data, tar, cols)
 
 
-    # corr = cal_corr()
-    # corr = corr[abs(corr) > 0.999]
-    # s = corr.count()
+    corr = cal_corr()
+    corr = corr[abs(corr) > 0.99]
+    s = corr.count()
     # ac = 0
-    # # print(corr.columns[0])
+    # print(corr.columns[0])
     # for i in range(len(s)):
     #     if s[i] > 1 and s[i] <= 5:
     #         print(corr.columns[i])
     #     ac += s[i]
     # print(ac)
-    # corr.to_csv(r'C:\Users\wuziyang\Desktop\corrs.csv')
+    corr.to_csv(r'C:\Users\Administrator\Desktop\ori_corrs.csv', encoding='utf-8-sig')
+
+# %%
